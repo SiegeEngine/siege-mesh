@@ -4,6 +4,60 @@
 extern crate serde_derive;
 extern crate serde;
 extern crate bincode;
+extern crate siege_math;
+
+use siege_math::Vec4;
+use serde::{Serialize,Deserialize};
+
+#[repr(C)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Mesh<V: Serialize + Deserialize> {
+    /// The vertices of the mesh
+    pub vertices: Vec<V>,
+
+    /// Indices of vertices for forming triangles
+    pub indices: Vec<(u32,u32,u32)>,
+
+    /// String values
+    /// Can use to store names of textures, e.g.: ("bump_texture", "mybump.obj")
+    /// Well-known keys include:
+    ///    diffuse_texture, specular_texture, roughness_texture, gloss_texture,
+    ///    normal_texture, bump_texture, displacement_texture, ao_texture,
+    ///    cavity_texture
+    pub strings: Vec<(String, String)>,
+
+    /// Float values
+    /// Can use to store floats, e.g.: ("roughness", 12.0)
+    /// Well-known keys include:
+    ///    roughness, gloss
+    pub floats: Vec<(String, f32)>,
+
+    /// Float-quads
+    /// Can use to store colors, e.g.: ("diffuse", (0.5, 0.5, 0.5, 1.0))
+    /// Well-known keys include:
+    ///    diffuse, specular
+    pub vec4s: Vec<(String, Vec4<f32>)>,
+}
+
+impl<V: Serialize + Deserialize> Default for Mesh<V> {
+    fn default() -> Mesh<V> {
+        Mesh {
+            vertices: Vec::new(),
+            indices: Vec::new(),
+            strings: Vec::new(),
+            floats: Vec::new(),
+            vec4s: Vec::new(),
+        }
+    }
+}
+
+pub const V_PC: u8 = 0;
+pub const V_PCN: u8 = 1;
+pub const V_PU: u8 = 2;
+pub const V_PNTU: u8 = 3;
+pub const V_PNTUS: u8 = 4;
+pub const V_PNTUR: u8 = 5;
+pub const V_PNTUSR: u8 = 6;
 
 /// A very simple vertex with vertex colors, and no normals (no lighting
 /// effects).  Not expected to be useful for game usage, but ok for early
