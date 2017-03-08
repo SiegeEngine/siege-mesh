@@ -1,0 +1,9 @@
+[package]
+name = "siege-mesh"
+version = "0.1.0-unstable11"
+authors = ["Mike Dilger <mike@optcomp.nz>"]
+
+[dependencies]
+serde = "0.9"
+serde_derive = "0.9"
+bincode = { version = "1.0.0-alpha4" }
