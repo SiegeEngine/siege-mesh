@@ -10,7 +10,7 @@ pub fn main() {
 
     let cube_mesh = define_mesh();
 
-    let mut f = File::create("/tmp/cube.mesh").unwrap();
+    let mut f = File::create("/tmp/cube.pcn.mesh").unwrap();
 
     let vertex_type: [u8; 1] = [V_PCN; 1];
     f.write(&vertex_type).unwrap();
