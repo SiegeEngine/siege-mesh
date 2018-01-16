@@ -15,7 +15,7 @@ pub fn main() {
     let vertex_type: [u8; 1] = [V_PU; 1];
     f.write(&vertex_type).unwrap();
 
-    ::bincode::serialize_into(&mut f, &cube_mesh, ::bincode::SizeLimit::Infinite).unwrap();
+    ::bincode::serialize_into(&mut f, &cube_mesh, ::bincode::Infinite).unwrap();
 
     println!("Serialized mesh.");
 }

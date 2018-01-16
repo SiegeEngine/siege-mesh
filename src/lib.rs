@@ -11,7 +11,7 @@ use serde::{Serialize,Deserialize};
 
 #[repr(C)]
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Mesh<V: Serialize + Deserialize> {
+pub struct Mesh<V> {
     /// The vertices of the mesh
     pub vertices: Vec<V>,
 
@@ -39,7 +39,7 @@ pub struct Mesh<V: Serialize + Deserialize> {
     pub vec4s: Vec<(String, Vec4<f32>)>,
 }
 
-impl<V: Serialize + Deserialize> Default for Mesh<V> {
+impl<V> Default for Mesh<V> {
     fn default() -> Mesh<V> {
         Mesh {
             vertices: Vec::new(),
