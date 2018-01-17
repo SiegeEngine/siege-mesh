@@ -73,6 +73,7 @@ fn define_mesh() -> Mesh<StandardVertex> {
     mesh.vertices = vertices;
     mesh.indices = indices;
     mesh.strings = vec![
+        ("pipeline".to_owned(), "standard".to_owned()),
         ("albedo".to_owned(), "cube_standard_albedomap.png".to_owned()),
         ("normal".to_owned(), "cube_standard_normalmap.png".to_owned())
     ];

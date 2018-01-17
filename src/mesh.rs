@@ -18,6 +18,7 @@ pub struct Mesh<V: Vertex> {
     /// String values
     /// Can use to store names of textures, e.g.: ("bump_texture", "mybump.obj")
     /// Well-known keys include:
+    ///    'pipeline': which siege-client pipeline is this mesh compatibile with
     ///    albedo, normal, tangent, diffuse, specular, roughness, gloss,
     ///    bump, displacement, ao, cavity
     pub strings: Vec<(String, String)>,
