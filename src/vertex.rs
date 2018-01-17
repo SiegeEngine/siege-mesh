@@ -36,7 +36,7 @@ pub enum VertexType {
     CheapV2 = 12,
 }
 
-pub trait Vertex
+pub trait Vertex: Copy
 {
     fn get_type() -> VertexType;
 }
