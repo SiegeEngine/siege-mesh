@@ -2,12 +2,35 @@
 use siege_math::Vec4;
 use vertex::{Vertex, VertexType};
 
+pub const MAGIC1: u8 = 238;
+pub const MAGIC2: u8 = 91;
+pub const MAGIC3: u8 = 130;
+
+// In order to deserialize a Mesh, we first need to know its vertex type.
+// So we have a header, which helps us deserialize the rest.
+// Since we have a header, we might as well have a magic number too.
+#[repr(C)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MeshHeader {
+    magic1: u8,
+    magic2: u8,
+    magic3: u8,
+    pub vertex_type: VertexType,
+}
+impl MeshHeader {
+    pub fn new(vertex_type: VertexType) -> MeshHeader {
+        MeshHeader {
+            magic1: MAGIC1,
+            magic2: MAGIC2,
+            magic3: MAGIC3,
+            vertex_type: vertex_type,
+        }
+    }
+}
+
 #[repr(C)]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Mesh<V: Vertex> {
-    // The type of vertex.
-    vertex_type: VertexType,
-
     /// The vertices of the mesh
     pub vertices: Vec<V>,
 
@@ -39,7 +62,6 @@ pub struct Mesh<V: Vertex> {
 impl<V: Vertex> Default for Mesh<V> {
     fn default() -> Mesh<V> {
         Mesh {
-            vertex_type: VertexType::Standard,
             vertices: Vec::new(),
             indices: Vec::new(),
             strings: Vec::new(),
@@ -50,9 +72,8 @@ impl<V: Vertex> Default for Mesh<V> {
 }
 
 impl<V: Vertex> Mesh<V> {
-    pub fn new(vertex_type: VertexType) -> Mesh<V> {
+    pub fn new() -> Mesh<V> {
         Mesh {
-            vertex_type: vertex_type,
             ..Default::default()
         }
     }

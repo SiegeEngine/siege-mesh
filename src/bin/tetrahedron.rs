@@ -3,7 +3,7 @@ extern crate siege_mesh;
 extern crate bincode;
 
 use std::f32;
-use siege_mesh::{Mesh, ColoredVertex, VertexType};
+use siege_mesh::{Mesh, ColoredVertex};
 
 pub fn main() {
     use std::fs::File;
@@ -43,7 +43,7 @@ fn define_mesh() -> Mesh<ColoredVertex> {
         (0,  1,  2), (3, 4, 5),
         (6,  7,  8), (9, 10, 11_u16)];
 
-    let mut mesh = Mesh::new(VertexType::Colored);
+    let mut mesh = Mesh::new();
     mesh.vertices = vertices;
     mesh.indices = indices;
 

@@ -2,7 +2,7 @@
 extern crate siege_mesh;
 extern crate bincode;
 
-use siege_mesh::{Mesh, StandardVertex, VertexType};
+use siege_mesh::{Mesh, StandardVertex};
 
 pub fn main() {
     use std::fs::File;
@@ -69,7 +69,7 @@ fn define_mesh() -> Mesh<StandardVertex> {
         (12, 11, 10), (12, 10, 13_u16) // back
     ];
 
-    let mut mesh = Mesh::new(VertexType::Standard);
+    let mut mesh = Mesh::new();
     mesh.vertices = vertices;
     mesh.indices = indices;
     mesh.strings = vec![
