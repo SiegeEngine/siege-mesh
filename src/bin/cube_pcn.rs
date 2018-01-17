@@ -2,7 +2,7 @@
 extern crate siege_mesh;
 extern crate bincode;
 
-use siege_mesh::{Mesh, VertexPCN, V_PCN};
+use siege_mesh::{Mesh, ColoredVertex, VertexType};
 
 pub fn main() {
     use std::fs::File;
@@ -12,7 +12,7 @@ pub fn main() {
 
     let mut f = File::create("/tmp/cube.pcn.mesh").unwrap();
 
-    let vertex_type: [u8; 1] = [V_PCN; 1];
+    let vertex_type: [u8; 1] = [VertexType::Colored as u8; 1];
     f.write(&vertex_type).unwrap();
 
     ::bincode::serialize_into(&mut f, &cube_mesh, ::bincode::Infinite).unwrap();
@@ -20,86 +20,86 @@ pub fn main() {
     println!("Serialized mesh.");
 }
 
-fn define_mesh() -> Mesh<VertexPCN> {
+fn define_mesh() -> Mesh<ColoredVertex> {
     let vertices = vec![
         // Front (orange)
-        VertexPCN { pos: [-1.0, -1.0, -1.0], // left upper front  0
-                    color: [1.0, 0.5, 0.0],
-                    normal: [0.0, 0.0, -1.0] },
-        VertexPCN { pos: [-1.0,  1.0, -1.0], // left lower front  1
-                    color: [1.0, 0.5, 0.0],
-                    normal: [0.0, 0.0, -1.0] },
-        VertexPCN { pos: [ 1.0,  1.0, -1.0], // right lower front 2
-                    color: [1.0, 0.5, 0.0],
-                    normal: [0.0, 0.0, -1.0] },
-        VertexPCN { pos: [ 1.0, -1.0, -1.0], // right upper front 3
-                    color: [1.0, 0.5, 0.0],
-                    normal: [0.0, 0.0, -1.0] },
+        ColoredVertex { pos: [-1.0, -1.0, -1.0], // left upper front  0
+                        color: [1.0, 0.5, 0.0],
+                        normal: [0.0, 0.0, -1.0] },
+        ColoredVertex { pos: [-1.0,  1.0, -1.0], // left lower front  1
+                        color: [1.0, 0.5, 0.0],
+                        normal: [0.0, 0.0, -1.0] },
+        ColoredVertex { pos: [ 1.0,  1.0, -1.0], // right lower front 2
+                        color: [1.0, 0.5, 0.0],
+                        normal: [0.0, 0.0, -1.0] },
+        ColoredVertex { pos: [ 1.0, -1.0, -1.0], // right upper front 3
+                        color: [1.0, 0.5, 0.0],
+                        normal: [0.0, 0.0, -1.0] },
         // Top (yellow)
-        VertexPCN { pos: [-1.0, -1.0, -1.0], // left upper front  4
-                    color: [1.0, 1.0, 0.0],
-                    normal: [0.0, -1.0, 0.0] },
-        VertexPCN { pos: [-1.0, -1.0, 1.0], // left upper rear    5
-                    color: [1.0, 1.0, 0.0],
-                    normal: [0.0, -1.0, 0.0] },
-        VertexPCN { pos: [1.0, -1.0, 1.0], // right upper rear    6
-                    color: [1.0, 1.0, 0.0],
-                    normal: [0.0, -1.0, 0.0] },
-        VertexPCN { pos: [1.0, -1.0, -1.0], // right upper front  7
-                    color: [1.0, 1.0, 0.0],
-                    normal: [0.0, -1.0, 0.0] },
+        ColoredVertex { pos: [-1.0, -1.0, -1.0], // left upper front  4
+                        color: [1.0, 1.0, 0.0],
+                        normal: [0.0, -1.0, 0.0] },
+        ColoredVertex { pos: [-1.0, -1.0, 1.0], // left upper rear    5
+                        color: [1.0, 1.0, 0.0],
+                        normal: [0.0, -1.0, 0.0] },
+        ColoredVertex { pos: [1.0, -1.0, 1.0], // right upper rear    6
+                        color: [1.0, 1.0, 0.0],
+                        normal: [0.0, -1.0, 0.0] },
+        ColoredVertex { pos: [1.0, -1.0, -1.0], // right upper front  7
+                        color: [1.0, 1.0, 0.0],
+                        normal: [0.0, -1.0, 0.0] },
         // Back (red)
-        VertexPCN { pos: [-1.0,  -1.0,  1.0], // left upper rear  8
-                    color: [1.0, 0.0, 0.0],
-                    normal: [0.0, 0.0, 1.0] },
-        VertexPCN { pos: [-1.0,  1.0,  1.0], // left lower rear   9
-                    color: [1.0, 0.0, 0.0],
-                    normal: [0.0, 0.0, 1.0] },
-        VertexPCN { pos: [ 1.0,  1.0,  1.0], // right lower rear  10
-                    color: [1.0, 0.0, 0.0],
-                    normal: [0.0, 0.0, 1.0] },
-        VertexPCN { pos: [ 1.0, -1.0,  1.0], // right upper rear  11
-                    color: [1.0, 0.0, 0.0],
-                    normal: [0.0, 0.0, 1.0] },
+        ColoredVertex { pos: [-1.0,  -1.0,  1.0], // left upper rear  8
+                        color: [1.0, 0.0, 0.0],
+                        normal: [0.0, 0.0, 1.0] },
+        ColoredVertex { pos: [-1.0,  1.0,  1.0], // left lower rear   9
+                        color: [1.0, 0.0, 0.0],
+                        normal: [0.0, 0.0, 1.0] },
+        ColoredVertex { pos: [ 1.0,  1.0,  1.0], // right lower rear  10
+                        color: [1.0, 0.0, 0.0],
+                        normal: [0.0, 0.0, 1.0] },
+        ColoredVertex { pos: [ 1.0, -1.0,  1.0], // right upper rear  11
+                        color: [1.0, 0.0, 0.0],
+                        normal: [0.0, 0.0, 1.0] },
         // Bottom (green)
-        VertexPCN { pos: [-1.0,  1.0, -1.0], // left lower front  12
-                    color: [0.0, 1.0, 0.0],
-                    normal: [0.0, 1.0, 0.0] },
-        VertexPCN { pos: [-1.0,  1.0,  1.0], // left lower rear   13
-                    color: [0.0, 1.0, 0.0],
-                    normal: [0.0, 1.0, 0.0] },
-        VertexPCN { pos: [ 1.0,  1.0,  1.0], // right lower rear  14
-                    color: [0.0, 1.0, 0.0],
-                    normal: [0.0, 1.0, 0.0] },
-        VertexPCN { pos: [ 1.0,  1.0, -1.0], // right lower front 15
-                    color: [0.0, 1.0, 0.0],
-                    normal: [0.0, 1.0, 0.0] },
+        ColoredVertex { pos: [-1.0,  1.0, -1.0], // left lower front  12
+                        color: [0.0, 1.0, 0.0],
+                        normal: [0.0, 1.0, 0.0] },
+        ColoredVertex { pos: [-1.0,  1.0,  1.0], // left lower rear   13
+                        color: [0.0, 1.0, 0.0],
+                        normal: [0.0, 1.0, 0.0] },
+        ColoredVertex { pos: [ 1.0,  1.0,  1.0], // right lower rear  14
+                        color: [0.0, 1.0, 0.0],
+                        normal: [0.0, 1.0, 0.0] },
+        ColoredVertex { pos: [ 1.0,  1.0, -1.0], // right lower front 15
+                        color: [0.0, 1.0, 0.0],
+                        normal: [0.0, 1.0, 0.0] },
         // Left (blue)
-        VertexPCN { pos: [-1.0, -1.0, -1.0], // left upper front  16
-                    color: [0.0, 0.0, 1.0],
-                    normal: [-1.0, 0.0, 0.0] },
-        VertexPCN { pos: [-1.0, -1.0,  1.0], // left upper rear   17
-                    color: [0.0, 0.0, 1.0],
-                    normal: [-1.0, 0.0, 0.0] },
-        VertexPCN { pos: [-1.0,  1.0,  1.0], // left lower rear   18
-                    color: [0.0, 0.0, 1.0],
-                    normal: [-1.0, 0.0, 0.0] },
-        VertexPCN { pos: [-1.0,  1.0, -1.0],  // left lower front 19
-                    color: [0.0, 0.0, 1.0],
-                    normal: [-1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [-1.0, -1.0, -1.0], // left upper front  16
+                        color: [0.0, 0.0, 1.0],
+                        normal: [-1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [-1.0, -1.0,  1.0], // left upper rear   17
+                        color: [0.0, 0.0, 1.0],
+                        normal: [-1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [-1.0,  1.0,  1.0], // left lower rear   18
+                        color: [0.0, 0.0, 1.0],
+                        normal: [-1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [-1.0,  1.0, -1.0],  // left lower front 19
+                        color: [0.0, 0.0, 1.0],
+                        normal: [-1.0, 0.0, 0.0] },
         // Right (purple)
-        VertexPCN { pos: [ 1.0, -1.0, -1.0], // right upper front 20
-                    color: [0.56, 0.0, 1.0],
-                    normal: [ 1.0, 0.0, 0.0] },
-        VertexPCN { pos: [ 1.0, -1.0,  1.0], // right upper rear  21
-                    color: [0.56, 0.0, 1.0],
-                    normal: [ 1.0, 0.0, 0.0] },
-        VertexPCN { pos: [ 1.0,  1.0,  1.0], // right lower rear  22
-                    color: [0.56, 0.0, 1.0],
-                    normal: [ 1.0, 0.0, 0.0] },
-        VertexPCN { pos: [ 1.0,  1.0, -1.0], // right lower front 23
-                    color: [0.56, 0.0, 1.0],
-                    normal: [ 1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [ 1.0, -1.0, -1.0], // right upper front 20
+                        color: [0.56, 0.0, 1.0],
+                        normal: [ 1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [ 1.0, -1.0,  1.0], // right upper rear  21
+                        color: [0.56, 0.0, 1.0],
+                        normal: [ 1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [ 1.0,  1.0,  1.0], // right lower rear  22
+                        color: [0.56, 0.0, 1.0],
+                        normal: [ 1.0, 0.0, 0.0] },
+        ColoredVertex { pos: [ 1.0,  1.0, -1.0], // right lower front 23
+                        color: [0.56, 0.0, 1.0],
+                        normal: [ 1.0, 0.0, 0.0] },
     ];
 
     let indices = vec![
