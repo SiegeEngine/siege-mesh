@@ -104,7 +104,7 @@ fn define_mesh() -> Mesh<ColoredVertex> {
         (12, 13, 14), (12, 14, 15),
         (9,  8,  11), (9,  11, 10),
         (17, 18, 19), (17, 19, 16),
-        (20, 23, 22), (20, 22, 21u32)];
+        (20, 23, 22), (20, 22, 21u16)];
 
     let mut mesh = Mesh::new(VertexType::Colored);
     mesh.vertices = vertices;

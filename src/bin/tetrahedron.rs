@@ -41,7 +41,7 @@ fn define_mesh() -> Mesh<ColoredVertex> {
 
     let indices = vec![
         (0,  1,  2), (3, 4, 5),
-        (6,  7,  8), (9, 10, 11_u32)];
+        (6,  7,  8), (9, 10, 11_u16)];
 
     let mut mesh = Mesh::new(VertexType::Colored);
     mesh.vertices = vertices;

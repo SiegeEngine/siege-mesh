@@ -66,7 +66,7 @@ fn define_mesh() -> Mesh<StandardVertex> {
         (7, 0, 1), (7, 1, 6), // top
         (8, 9, 3), (8, 3, 0), // left
         (1, 2, 11), (1, 11, 12), // right
-        (12, 11, 10), (12, 10, 13_u32) // back
+        (12, 11, 10), (12, 10, 13_u16) // back
     ];
 
     let mut mesh = Mesh::new(VertexType::Standard);

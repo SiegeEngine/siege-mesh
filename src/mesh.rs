@@ -13,7 +13,7 @@ pub struct Mesh<V: Vertex> {
 
     /// Indices of vertices for forming triangles
     /// Meshes currently use indexed draw only
-    pub indices: Vec<(u32,u32,u32)>,
+    pub indices: Vec<(u16,u16,u16)>,
 
     /// String values
     /// Can use to store names of textures, e.g.: ("bump_texture", "mybump.obj")
