@@ -93,7 +93,7 @@ dependencies = [
 
 [[package]]
 name = "siege-mesh"
-version = "0.1.0-unstable11"
+version = "0.2.0"
 dependencies = [
  "bincode 0.9.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
