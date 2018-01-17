@@ -20,73 +20,58 @@ pub fn main() {
     println!("Serialized mesh.");
 }
 
-// UV MAPPING IS SLOPPY, come back to fix that.
+/*
+Cubes have 8 vertices.
+We need 14 in order to UV map properly
+       7---6
+       |tp |
+   8---0---1---C---D
+   | l |fr | r |bak|
+   9---3---2---B---A
+       |bt |
+       4---5
+ */
 
 fn define_mesh() -> Mesh<StandardVertex> {
     let vertices = vec![
-        // Front (orange)
-        StandardVertex { pos: [-1.0, -1.0, -1.0], // left upper front  0
-                         uv: [0.0, 0.0] },
-        StandardVertex { pos: [-1.0,  1.0, -1.0], // left lower front  1
-                         uv: [0.0, 1.0] },
-        StandardVertex { pos: [ 1.0,  1.0, -1.0], // right lower front 2
-                         uv: [1.0, 1.0] },
-        StandardVertex { pos: [ 1.0, -1.0, -1.0], // right upper front 3
-                         uv: [1.0, 0.0] },
-        // Top (yellow)
-        StandardVertex { pos: [-1.0, -1.0, -1.0], // left upper front  4
-                         uv: [0.0, 1.0] },
-        StandardVertex { pos: [-1.0, -1.0, 1.0], // left upper rear    5
-                         uv: [0.0, 0.0] },
-        StandardVertex { pos: [1.0, -1.0, 1.0], // right upper rear    6
-                         uv: [1.0, 0.0] },
-        StandardVertex { pos: [1.0, -1.0, -1.0], // right upper front  7
-                         uv: [1.0, 1.0] },
-        // Back (red)
-        StandardVertex { pos: [-1.0,  -1.0,  1.0], // left upper rear  8
-                         uv: [1.0, 0.0] },
-        StandardVertex { pos: [-1.0,  1.0,  1.0], // left lower rear   9
-                         uv: [1.0, 1.0] },
-        StandardVertex { pos: [ 1.0,  1.0,  1.0], // right lower rear  10
-                         uv: [0.0, 1.0] },
-        StandardVertex { pos: [ 1.0, -1.0,  1.0], // right upper rear  11
-                         uv: [0.0, 0.0] },
-        // Bottom (green)
-        StandardVertex { pos: [-1.0,  1.0, -1.0], // left lower front  12
-                         uv: [1.0, 0.0] },
-        StandardVertex { pos: [-1.0,  1.0,  1.0], // left lower rear   13
-                         uv: [1.0, 1.0] },
-        StandardVertex { pos: [ 1.0,  1.0,  1.0], // right lower rear  14
-                         uv: [0.0, 1.0] },
-        StandardVertex { pos: [ 1.0,  1.0, -1.0], // right lower front 15
-                         uv: [0.0, 0.0] },
-        // Left (blue)
-        StandardVertex { pos: [-1.0, -1.0, -1.0], // left upper front  16
-                         uv: [1.0, 0.0] },
-        StandardVertex { pos: [-1.0, -1.0,  1.0], // left upper rear   17
-                         uv: [1.0, 1.0] },
-        StandardVertex { pos: [-1.0,  1.0,  1.0], // left lower rear   18
-                         uv: [0.0, 1.0] },
-        StandardVertex { pos: [-1.0,  1.0, -1.0],  // left lower front 19
-                         uv: [0.0, 0.0] },
-        // Right (purple)
-        StandardVertex { pos: [ 1.0, -1.0, -1.0], // right upper front 20
-                         uv: [1.0, 0.0] },
-        StandardVertex { pos: [ 1.0, -1.0,  1.0], // right upper rear  21
-                         uv: [1.0, 1.0] },
-        StandardVertex { pos: [ 1.0,  1.0,  1.0], // right lower rear  22
-                         uv: [0.0, 1.0] },
-        StandardVertex { pos: [ 1.0,  1.0, -1.0], // right lower front 23
-                         uv: [0.0, 0.0] },
+        StandardVertex { pos: [-1.0, -1.0, -1.0], // 0
+                         uv: [0.25, 1.0/3.0] },
+        StandardVertex { pos: [ 1.0, -1.0, -1.0], // 1
+                         uv: [0.50, 1.0/3.0] },
+        StandardVertex { pos: [ 1.0,  1.0, -1.0], // 2
+                         uv: [0.50, 2.0/3.0] },
+        StandardVertex { pos: [-1.0,  1.0, -1.0], // 3
+                         uv: [0.25, 2.0/3.0] },
+        StandardVertex { pos: [-1.0,  1.0,  1.0], // 4
+                         uv: [0.25, 1.0] },
+        StandardVertex { pos: [ 1.0,  1.0,  1.0], // 5
+                         uv: [0.50, 1.0] },
+        StandardVertex { pos: [ 1.0, -1.0,  1.0], // 6
+                         uv: [0.50, 0.0] },
+        StandardVertex { pos: [-1.0, -1.0,  1.0], // 7
+                         uv: [0.25, 0.0] },
+        StandardVertex { pos: [-1.0, -1.0,  1.0], // 8     coincident with 7
+                         uv: [0.0, 1.0/3.0] },
+        StandardVertex { pos: [-1.0,  1.0,  1.0], // 9     coincident with 4
+                         uv: [0.0, 2.0/3.0] },
+        StandardVertex { pos: [-1.0,  1.0,  1.0], // 10, A coincident with 4
+                         uv: [1.0, 2.0/3.0] },
+        StandardVertex { pos: [ 1.0,  1.0,  1.0], // 11, B coincidnet with 5
+                         uv: [0.75, 2.0/3.0] },
+        StandardVertex { pos: [ 1.0, -1.0,  1.0], // 12, C coincident with 6
+                         uv: [0.75, 1.0/3.0] },
+        StandardVertex { pos: [-1.0, -1.0,  1.0], // 13, D coincident with 7
+                         uv: [1.0, 1.0/3.0] },
     ];
 
     let indices = vec![
-        (0,  1,  2), (0,  2,  3),
-        (5,  4,  7), (5,  7,  6),
-        (12, 13, 14), (12, 14, 15),
-        (9,  8,  11), (9,  11, 10),
-        (17, 18, 19), (17, 19, 16),
-        (20, 23, 22), (20, 22, 21u32)];
+        (0, 3, 2), (0, 2, 1), // front
+        (3, 4, 5), (3, 5, 2), // bottom
+        (7, 0, 1), (7, 1, 6), // top
+        (8, 9, 3), (8, 3, 0), // left
+        (1, 2, 11), (1, 11, 12), // right
+        (12, 11, 10), (12, 10, 13_u32) // back
+    ];
 
     Mesh {
         vertices: vertices,
