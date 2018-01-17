@@ -2,6 +2,9 @@
 // Notes:  tangent maps are no longer best precomputed; Better to compute them
 //         in the fragment shader.
 
+use errors::*;
+use serde::Serialize;
+
 /// The type of vertex
 #[repr(u8)]
 #[derive(Clone, Debug, Copy, Serialize, Deserialize)]
@@ -36,7 +39,21 @@ pub enum VertexType {
     CheapV2 = 12,
 }
 
-pub trait Vertex: Copy
+impl VertexType {
+    pub fn try_from_u8(u: u8) -> Result<VertexType> {
+        match u {
+            1 => Ok(VertexType::Colored),
+            2 => Ok(VertexType::Standard),
+            7 => Ok(VertexType::GuiRectangle),
+            9 => Ok(VertexType::Graybox),
+            11 => Ok(VertexType::CheapV1),
+            12 => Ok(VertexType::CheapV2),
+            _ => Err(ErrorKind::UnknownVertexType.into()),
+        }
+    }
+}
+
+pub trait Vertex: Copy + Serialize
 {
     fn get_type() -> VertexType;
 }

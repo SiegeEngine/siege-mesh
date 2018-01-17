@@ -2,18 +2,12 @@
 extern crate siege_mesh;
 extern crate bincode;
 
-use siege_mesh::{Mesh, StandardVertex};
+use siege_mesh::{Mesh, StandardVertex, VertexType};
 
 pub fn main() {
-    use std::fs::File;
-
     let cube_mesh = define_mesh();
-
-    let mut f = File::create("cube_standard.mesh").unwrap();
-
-    ::bincode::serialize_into(&mut f, &cube_mesh, ::bincode::Infinite).unwrap();
-
-    println!("Serialized mesh.");
+    cube_mesh.save(VertexType::Standard, "cube_standard.mesh").unwrap();
+    println!("Saved.");
 }
 
 /*

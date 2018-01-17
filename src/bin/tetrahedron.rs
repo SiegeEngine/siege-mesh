@@ -3,18 +3,12 @@ extern crate siege_mesh;
 extern crate bincode;
 
 use std::f32;
-use siege_mesh::{Mesh, ColoredVertex};
+use siege_mesh::{Mesh, ColoredVertex, VertexType};
 
 pub fn main() {
-    use std::fs::File;
-
     let mesh = define_mesh();
-
-    let mut f = File::create("tetrahedron.mesh").unwrap();
-
-    ::bincode::serialize_into(&mut f, &mesh, ::bincode::Infinite).unwrap();
-
-    println!("Serialized mesh.");
+    mesh.save(VertexType::Colored, "tetrahedron.mesh").unwrap();
+    println!("Saved.");
 }
 
 const ISQRT3: f32 = 0.5773502691896258;
@@ -48,5 +42,4 @@ fn define_mesh() -> Mesh<ColoredVertex> {
     mesh.indices = indices;
 
     mesh
-
 }

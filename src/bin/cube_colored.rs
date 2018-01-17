@@ -2,18 +2,12 @@
 extern crate siege_mesh;
 extern crate bincode;
 
-use siege_mesh::{Mesh, ColoredVertex};
+use siege_mesh::{Mesh, ColoredVertex, VertexType};
 
 pub fn main() {
-    use std::fs::File;
-
     let cube_mesh = define_mesh();
-
-    let mut f = File::create("cube_colored.mesh").unwrap();
-
-    ::bincode::serialize_into(&mut f, &cube_mesh, ::bincode::Infinite).unwrap();
-
-    println!("Serialized mesh.");
+    cube_mesh.save(VertexType::Colored, "cube_colored.mesh").unwrap();
+    println!("Saved.");
 }
 
 fn define_mesh() -> Mesh<ColoredVertex> {
