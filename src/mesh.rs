@@ -18,9 +18,8 @@ pub struct Mesh<V: Vertex> {
     /// String values
     /// Can use to store names of textures, e.g.: ("bump_texture", "mybump.obj")
     /// Well-known keys include:
-    ///    diffuse_texture, specular_texture, roughness_texture, gloss_texture,
-    ///    normal_texture, bump_texture, displacement_texture, ao_texture,
-    ///    cavity_texture
+    ///    albedo, normal, tangent, diffuse, specular, roughness, gloss,
+    ///    bump, displacement, ao, cavity
     pub strings: Vec<(String, String)>,
 
     /// Float values
