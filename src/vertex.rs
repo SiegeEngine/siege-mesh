@@ -88,7 +88,7 @@ impl Vertex for GuiRectangleVertex {
 pub struct GrayboxVertex {
     pub pos: [f32; 3],
     pub normal: [f32; 3],
-    pub specular: f32,
+    pub specular: [f32; 3],
     pub roughness: f32,
 }
 impl Vertex for GrayboxVertex {
@@ -104,7 +104,7 @@ pub struct CheapV1Vertex {
     pub pos: [f32; 3],
     pub uv: [f32; 2],
     pub specular: [f32; 3],
-    pub roughness: [f32; 3],
+    pub roughness: f32,
 }
 impl Vertex for CheapV1Vertex {
     fn get_type() -> VertexType {
@@ -120,7 +120,7 @@ pub struct CheapV2Vertex {
     pub uv: [f32; 2],
     pub normal: [f32; 3],
     pub specular: [f32; 3],
-    pub roughness: [f32; 3],
+    pub roughness: f32,
 }
 impl Vertex for CheapV2Vertex {
     fn get_type() -> VertexType {
