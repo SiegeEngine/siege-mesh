@@ -11,7 +11,7 @@ pub fn main() {
 
     let mesh = define_mesh();
 
-    let mut f = File::create("/tmp/tetrahedron.mesh").unwrap();
+    let mut f = File::create("tetrahedron.mesh").unwrap();
 
     let vertex_type: [u8; 1] = [VertexType::Colored as u8; 1];
     f.write(&vertex_type).unwrap();
