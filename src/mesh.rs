@@ -1,6 +1,7 @@
 
 use errors::*;
 use vertex::*;
+use std::path::Path;
 use siege_math::Vec4;
 
 pub const MAGIC1: u8 = 238;
@@ -89,45 +90,45 @@ impl<V: Vertex> Mesh<V> {
         ::bincode::serialize_into(&mut f, self, ::bincode::Infinite)?;
         Ok(())
     }
+}
 
-    fn load_header(pathstr: &str) -> Result<(VertexType, Vec<u8>)>
+pub fn load_header(path: &Path) -> Result<(VertexType, Vec<u8>)>
+{
+    use std::fs::File;
+    use std::io::Read;
+
+    let mut f = try!(File::open(path));
+    let mut bytes: Vec<u8> = Vec::new();
+    f.read_to_end(&mut bytes)?;
+    if bytes.len() < 4 {
+        return Err(ErrorKind::ShortFile.into());
+    }
+
+    if bytes[0]!=MAGIC1 || bytes[1]!=MAGIC2 || bytes[2]!=MAGIC3
     {
-        use std::fs::File;
-        use std::io::Read;
-
-        let mut f = try!(File::open(pathstr));
-        let mut bytes: Vec<u8> = Vec::new();
-        f.read_to_end(&mut bytes)?;
-        if bytes.len() < 4 {
-            return Err(ErrorKind::ShortFile.into());
-        }
-
-        if bytes[0]!=MAGIC1 || bytes[1]!=MAGIC2 || bytes[2]!=MAGIC3
-        {
-            return Err(ErrorKind::BadMagicNumber.into());
-        }
-
-        let vertex_type = VertexType::try_from_u8(bytes[3])?;
-
-        Ok((vertex_type, bytes))
+        return Err(ErrorKind::BadMagicNumber.into());
     }
 
-    pub fn deseralize_colored(bytes: &[u8]) -> Result<Mesh<ColoredVertex>> {
-        Ok(::bincode::deserialize(bytes)?)
-    }
-    pub fn deseralize_standard(bytes: &[u8]) -> Result<Mesh<StandardVertex>> {
-        Ok(::bincode::deserialize(bytes)?)
-    }
-    pub fn deseralize_gui_rectangle(bytes: &[u8]) -> Result<Mesh<GuiRectangleVertex>> {
-        Ok(::bincode::deserialize(bytes)?)
-    }
-    pub fn deseralize_graybox(bytes: &[u8]) -> Result<Mesh<GrayboxVertex>> {
-        Ok(::bincode::deserialize(bytes)?)
-    }
-    pub fn deseralize_cheapv1(bytes: &[u8]) -> Result<Mesh<CheapV1Vertex>> {
-        Ok(::bincode::deserialize(bytes)?)
-    }
-    pub fn deseralize_cheapv2(bytes: &[u8]) -> Result<Mesh<CheapV2Vertex>> {
-        Ok(::bincode::deserialize(bytes)?)
-    }
+    let vertex_type = VertexType::try_from_u8(bytes[3])?;
+
+    Ok((vertex_type, bytes))
+}
+
+pub fn deserialize_colored(bytes: &[u8]) -> Result<Mesh<ColoredVertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}
+pub fn deserialize_standard(bytes: &[u8]) -> Result<Mesh<StandardVertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}
+pub fn deserialize_gui_rectangle(bytes: &[u8]) -> Result<Mesh<GuiRectangleVertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}
+pub fn deserialize_graybox(bytes: &[u8]) -> Result<Mesh<GrayboxVertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}
+pub fn deserialize_cheapv1(bytes: &[u8]) -> Result<Mesh<CheapV1Vertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}
+pub fn deserialize_cheapv2(bytes: &[u8]) -> Result<Mesh<CheapV2Vertex>> {
+    Ok(::bincode::deserialize(bytes)?)
 }
