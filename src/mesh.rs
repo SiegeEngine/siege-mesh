@@ -132,3 +132,6 @@ pub fn deserialize_cheapv1(bytes: &[u8]) -> Result<Mesh<CheapV1Vertex>> {
 pub fn deserialize_cheapv2(bytes: &[u8]) -> Result<Mesh<CheapV2Vertex>> {
     Ok(::bincode::deserialize(bytes)?)
 }
+pub fn deserialize_star(bytes: &[u8]) -> Result<Mesh<StarVertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}

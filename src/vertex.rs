@@ -37,6 +37,9 @@ pub enum VertexType {
 
     /// Even Cheaper than Cheap, we provide normal/specular/roughness per-vertex
     CheapV2 = 12,
+
+    /// Star
+    Star = 13,
 }
 
 impl VertexType {
@@ -48,6 +51,7 @@ impl VertexType {
             9 => Ok(VertexType::Graybox),
             11 => Ok(VertexType::CheapV1),
             12 => Ok(VertexType::CheapV2),
+            13 => Ok(VertexType::Star),
             _ => Err(ErrorKind::UnknownVertexType.into()),
         }
     }
@@ -142,5 +146,20 @@ pub struct CheapV2Vertex {
 impl Vertex for CheapV2Vertex {
     fn get_type() -> VertexType {
         VertexType::CheapV2
+    }
+}
+
+/// Used for stars
+#[repr(C)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub struct StarVertex {
+    pub pos: [f32; 3],
+    pub color: [f32; 3],
+    // From 0.0 to 1.0 (percent of max star brightness)
+    pub brightness: f32,
+}
+impl Vertex for StarVertex {
+    fn get_type() -> VertexType {
+        VertexType::Star
     }
 }
