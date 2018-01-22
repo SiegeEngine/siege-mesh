@@ -90,6 +90,21 @@ impl<V: Vertex> Mesh<V> {
         ::bincode::serialize_into(&mut f, self, ::bincode::Infinite)?;
         Ok(())
     }
+
+    pub fn get_string(&self, key: &str) -> Option<String>
+    {
+        self.strings.iter().find(|&&(ref k,_)| k==key).map(|&(_,ref v)|v.clone())
+    }
+
+    pub fn get_float(&self, key: &str) -> Option<f32>
+    {
+        self.floats.iter().find(|&&(ref k,_)| k==key).map(|&(_,v)|v)
+    }
+
+    pub fn get_vec4(&self, key: &str) -> Option<Vec4<f32>>
+    {
+        self.vec4s.iter().find(|&&(ref k,_)| k==key).map(|&(_,ref v)|v.clone())
+    }
 }
 
 pub fn load_header(path: &Path) -> Result<(VertexType, Vec<u8>)>
