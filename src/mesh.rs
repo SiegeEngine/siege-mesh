@@ -37,7 +37,7 @@ pub struct Mesh<V: Vertex> {
     pub vertices: Vec<V>,
 
     /// Indices of vertices for forming triangles
-    /// Meshes currently use indexed draw only
+    /// Pipelines generally use indexed draw, but if not this vector can be empty.
     pub indices: Vec<(u16,u16,u16)>,
 
     /// String values
