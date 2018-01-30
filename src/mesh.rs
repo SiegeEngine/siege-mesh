@@ -126,7 +126,7 @@ pub fn load_header(path: &Path) -> Result<(VertexType, Vec<u8>)>
 
     let vertex_type = VertexType::try_from_u8(bytes[3])?;
 
-    Ok((vertex_type, bytes))
+    Ok((vertex_type, bytes.split_off(4)))
 }
 
 pub fn deserialize_colored(bytes: &[u8]) -> Result<Mesh<ColoredVertex>> {
