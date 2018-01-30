@@ -7,7 +7,7 @@ use serde::Serialize;
 
 /// The type of vertex
 #[repr(u8)]
-#[derive(Clone, Debug, Copy, Serialize, Deserialize)]
+#[derive(Clone, Debug, Copy, Serialize, Deserialize, PartialEq)]
 pub enum VertexType {
 
     // PC = 0, // retired
