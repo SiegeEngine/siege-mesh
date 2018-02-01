@@ -54,7 +54,7 @@ dependencies = [
 [[package]]
 name = "float-cmp"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/mikedilger/float-cmp#d01c1ff47afaddda936421e2cba4f99557d09187"
 dependencies = [
  "num 0.1.41 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -134,7 +134,7 @@ dependencies = [
 name = "siege-math"
 version = "0.2.0"
 dependencies = [
- "float-cmp 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "float-cmp 0.3.0 (git+https://github.com/mikedilger/float-cmp)",
  "num-traits 0.1.41 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -201,7 +201,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum cc 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "deaf9ec656256bb25b404c51ef50097207b9cbb29c933d31f92cae5a8a0ffee0"
 "checksum cfg-if 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "d4c819a1287eb618df47cc647173c5c4c66ba19d888a6e50d605672aed3140de"
 "checksum error-chain 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ff511d5dc435d703f4971bc399647c9bc38e20cb41452e3b9feb4765419ed3f3"
-"checksum float-cmp 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "2be876712b52d3970d361df27210574630d8d44d6461f0b55745d56e88ac10b0"
+"checksum float-cmp 0.3.0 (git+https://github.com/mikedilger/float-cmp)" = "<none>"
 "checksum libc 0.2.36 (registry+https://github.com/rust-lang/crates.io-index)" = "1e5d97d6708edaa407429faa671b942dc0f2727222fb6b6539bf1db936e4b121"
 "checksum num 0.1.41 (registry+https://github.com/rust-lang/crates.io-index)" = "cc4083e14b542ea3eb9b5f33ff48bd373a92d78687e74f4cc0a30caeb754f0ca"
 "checksum num-integer 0.1.35 (registry+https://github.com/rust-lang/crates.io-index)" = "d1452e8b06e448a07f0e6ebb0bb1d92b8890eea63288c0b627331d53514d0fba"

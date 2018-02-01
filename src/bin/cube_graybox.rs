@@ -15,128 +15,80 @@ fn define_mesh() -> Mesh<GrayboxVertex> {
         // Front
         GrayboxVertex { pos: [-1.0, -1.0, 9.0], // left upper front  0
                         normal: [0.0, 0.0, -1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0,  1.0, 9.0], // left lower front  1
                         normal: [0.0, 0.0, -1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0,  1.0, 9.0], // right lower front 2
                         normal: [0.0, 0.0, -1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0, -1.0, 9.0], // right upper front 3
                         normal: [0.0, 0.0, -1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         // Top
         GrayboxVertex { pos: [-1.0, -1.0, 9.0], // left upper front  4
                         normal: [0.0, -1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0, -1.0, 11.0], // left upper rear    5
                         normal: [0.0, -1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0, -1.0, 11.0], // right upper rear    6
                         normal: [0.0, -1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [1.0, -1.0,  9.0], // right upper front  7
                         normal: [0.0, -1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         // Back
         GrayboxVertex { pos: [-1.0,  -1.0, 11.0], // left upper rear  8
                         normal: [0.0, 0.0, 1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0,  1.0,  11.0], // left lower rear   9
                         normal: [0.0, 0.0, 1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0,  1.0,  11.0], // right lower rear  10
                         normal: [0.0, 0.0, 1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0, -1.0,  11.0], // right upper rear  11
                         normal: [0.0, 0.0, 1.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         // Bottom
         GrayboxVertex { pos: [-1.0,  1.0,  9.0], // left lower front  12
                         normal: [0.0, 1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0,  1.0, 11.0], // left lower rear   13
                         normal: [0.0, 1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0,  1.0, 11.0], // right lower rear  14
                         normal: [0.0, 1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0,  1.0,  9.0], // right lower front 15
                         normal: [0.0, 1.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         // Left
         GrayboxVertex { pos: [-1.0, -1.0,  9.0], // left upper front  16
                         normal: [-1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0, -1.0, 11.0], // left upper rear   17
                         normal: [-1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0,  1.0, 11.0], // left lower rear   18
                         normal: [-1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [-1.0,  1.0,  9.0],  // left lower front 19
                         normal: [-1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         // Right
         GrayboxVertex { pos: [ 1.0, -1.0,  9.0], // right upper front 20
                         normal: [ 1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0, -1.0, 11.0], // right upper rear  21
                         normal: [ 1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0,  1.0, 11.0], // right lower rear  22
                         normal: [ 1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
         GrayboxVertex { pos: [ 1.0,  1.0,  9.0], // right lower front 23
                         normal: [ 1.0, 0.0, 0.0],
-                        specular: [ 1.0, 1.0, 1.0 ],
-                        roughness: 0.0
         },
     ];
 

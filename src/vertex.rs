@@ -28,8 +28,9 @@ pub enum VertexType {
     /// For a rectangular area on the screen for GUI usage (2d position only, uv implicit)
     GuiRectangle = 7,
 
-    /// For grayboxed meshes with no textures involved. Normal, specular, and roughness are
-    /// per vertex.
+    /// For grayboxed meshes with no textures involved, using physically-improved
+    /// Blinn-Phong shading.  Per-vertex position and normal.  Color (diffuse
+    /// and specular) and shininess is across the entire model, not per-vertex.
     Graybox = 9,
 
     /// Cheaper than Standard, we provide shading data per-vertex
@@ -109,8 +110,6 @@ impl Vertex for GuiRectangleVertex {
 pub struct GrayboxVertex {
     pub pos: [f32; 3],
     pub normal: [f32; 3],
-    pub specular: [f32; 3],
-    pub roughness: f32,
 }
 impl Vertex for GrayboxVertex {
     fn get_type() -> VertexType {
@@ -118,14 +117,13 @@ impl Vertex for GrayboxVertex {
     }
 }
 
-/// Cheaper than Standard, we provide specular/roughness per-vertex instead of with maps
+/// Cheaper than Standard, we provide shininess per-vertex instead of with maps
 #[repr(C)]
 #[derive(Clone, Debug, Copy, Serialize, Deserialize)]
 pub struct CheapV1Vertex {
     pub pos: [f32; 3],
     pub uv: [f32; 2],
-    pub specular: [f32; 3],
-    pub roughness: f32,
+    pub shininess: f32,
 }
 impl Vertex for CheapV1Vertex {
     fn get_type() -> VertexType {
@@ -133,15 +131,14 @@ impl Vertex for CheapV1Vertex {
     }
 }
 
-/// Even Cheaper than Cheap, we provide normal/specular/roughness per-vertex
+/// Even Cheaper than Cheap, we provide normal/shininess per-vertex
 #[repr(C)]
 #[derive(Clone, Debug, Copy, Serialize, Deserialize)]
 pub struct CheapV2Vertex {
     pub pos: [f32; 3],
     pub uv: [f32; 2],
     pub normal: [f32; 3],
-    pub specular: [f32; 3],
-    pub roughness: f32,
+    pub shininess: f32,
 }
 impl Vertex for CheapV2Vertex {
     fn get_type() -> VertexType {
