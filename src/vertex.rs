@@ -41,6 +41,9 @@ pub enum VertexType {
 
     /// Star
     Star = 13,
+
+    /// Cubemap (position and uvw)
+    Cubemap = 14,
 }
 
 impl VertexType {
@@ -53,6 +56,7 @@ impl VertexType {
             11 => Ok(VertexType::CheapV1),
             12 => Ok(VertexType::CheapV2),
             13 => Ok(VertexType::Star),
+            14 => Ok(VertexType::Cubemap),
             _ => Err(ErrorKind::UnknownVertexType.into()),
         }
     }
@@ -158,5 +162,18 @@ pub struct StarVertex {
 impl Vertex for StarVertex {
     fn get_type() -> VertexType {
         VertexType::Star
+    }
+}
+
+/// For cubemaps.  Position and UVW.
+#[repr(C)]
+#[derive(Clone, Debug, Copy, Serialize, Deserialize)]
+pub struct CubemapVertex {
+    pub pos: [f32; 3],
+    pub uvw: [f32; 3],
+}
+impl Vertex for CubemapVertex {
+    fn get_type() -> VertexType {
+        VertexType::Cubemap
     }
 }
