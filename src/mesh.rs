@@ -150,3 +150,6 @@ pub fn deserialize_cheapv2(bytes: &[u8]) -> Result<Mesh<CheapV2Vertex>> {
 pub fn deserialize_star(bytes: &[u8]) -> Result<Mesh<StarVertex>> {
     Ok(::bincode::deserialize(bytes)?)
 }
+pub fn deserialize_cubemap(bytes: &[u8]) -> Result<Mesh<CubemapVertex>> {
+    Ok(::bincode::deserialize(bytes)?)
+}
