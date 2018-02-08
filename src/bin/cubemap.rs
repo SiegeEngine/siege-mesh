@@ -17,35 +17,35 @@ fn define_mesh() -> Mesh<CubemapVertex> {
 
     let vertices = vec![
         // Right (+X)
-        CubemapVertex { pos: [ 1.0, -1.0, -1.0], uvw: [ 0.0, 0.0, 0.0] }, // right upper front
-        CubemapVertex { pos: [ 1.0, -1.0,  1.0], uvw: [ 1.0, 0.0, 0.0] }, // right upper rear
-        CubemapVertex { pos: [ 1.0,  1.0, -1.0], uvw: [ 0.0, 1.0, 0.0] }, // right lower front
-        CubemapVertex { pos: [ 1.0,  1.0,  1.0], uvw: [ 1.0, 1.0, 0.0] }, // right lower rear
+        CubemapVertex { pos: [ 1.0, -1.0, -1.0] }, // right upper front
+        CubemapVertex { pos: [ 1.0, -1.0,  1.0] }, // right upper rear
+        CubemapVertex { pos: [ 1.0,  1.0, -1.0] }, // right lower front
+        CubemapVertex { pos: [ 1.0,  1.0,  1.0] }, // right lower rear
         // Left (-X)
-        CubemapVertex { pos: [-1.0, -1.0,  1.0], uvw: [ 0.0, 0.0, 1.0] }, // left upper rear
-        CubemapVertex { pos: [-1.0, -1.0, -1.0], uvw: [ 1.0, 0.0, 1.0] }, // left upper front
-        CubemapVertex { pos: [-1.0,  1.0,  1.0], uvw: [ 0.0, 1.0, 1.0] }, // left lower rear
-        CubemapVertex { pos: [-1.0,  1.0, -1.0], uvw: [ 1.0, 1.0, 1.0] }, // left lower front
+        CubemapVertex { pos: [-1.0, -1.0,  1.0] }, // left upper rear
+        CubemapVertex { pos: [-1.0, -1.0, -1.0] }, // left upper front
+        CubemapVertex { pos: [-1.0,  1.0,  1.0] }, // left lower rear
+        CubemapVertex { pos: [-1.0,  1.0, -1.0] }, // left lower front
         // Bottom (+Y)
-        CubemapVertex { pos: [-1.0,  1.0, -1.0], uvw: [ 0.0, 0.0, 2.0] }, // left lower front
-        CubemapVertex { pos: [ 1.0,  1.0, -1.0], uvw: [ 1.0, 0.0, 2.0] }, // right lower front
-        CubemapVertex { pos: [-1.0,  1.0,  1.0], uvw: [ 0.0, 1.0, 2.0] }, // left lower rear
-        CubemapVertex { pos: [ 1.0,  1.0,  1.0], uvw: [ 1.0, 1.0, 2.0] }, // right lower rear
+        CubemapVertex { pos: [-1.0,  1.0, -1.0] }, // left lower front
+        CubemapVertex { pos: [ 1.0,  1.0, -1.0] }, // right lower front
+        CubemapVertex { pos: [-1.0,  1.0,  1.0] }, // left lower rear
+        CubemapVertex { pos: [ 1.0,  1.0,  1.0] }, // right lower rear
         // Top (-Y)
-        CubemapVertex { pos: [-1.0, -1.0,  1.0], uvw: [ 0.0, 0.0, 3.0] }, // left upper rear
-        CubemapVertex { pos: [ 1.0, -1.0,  1.0], uvw: [ 1.0, 0.0, 3.0] }, // right upper rear
-        CubemapVertex { pos: [-1.0, -1.0, -1.0], uvw: [ 0.0, 1.0, 3.0] }, // left upper front
-        CubemapVertex { pos: [ 1.0, -1.0, -1.0], uvw: [ 1.0, 1.0, 3.0] }, // right upper front
+        CubemapVertex { pos: [-1.0, -1.0,  1.0] }, // left upper rear
+        CubemapVertex { pos: [ 1.0, -1.0,  1.0] }, // right upper rear
+        CubemapVertex { pos: [-1.0, -1.0, -1.0] }, // left upper front
+        CubemapVertex { pos: [ 1.0, -1.0, -1.0] }, // right upper front
         // Back (+Z)
-        CubemapVertex { pos: [ 1.0, -1.0,  1.0], uvw: [ 0.0, 0.0, 4.0] }, // right upper rear
-        CubemapVertex { pos: [-1.0, -1.0,  1.0], uvw: [ 1.0, 0.0, 4.0] }, // left upper rear
-        CubemapVertex { pos: [ 1.0,  1.0,  1.0], uvw: [ 0.0, 1.0, 4.0] }, // right lower rear
-        CubemapVertex { pos: [-1.0,  1.0,  1.0], uvw: [ 1.0, 1.0, 4.0] }, // left lower rear
+        CubemapVertex { pos: [ 1.0, -1.0,  1.0] }, // right upper rear
+        CubemapVertex { pos: [-1.0, -1.0,  1.0] }, // left upper rear
+        CubemapVertex { pos: [ 1.0,  1.0,  1.0] }, // right lower rear
+        CubemapVertex { pos: [-1.0,  1.0,  1.0] }, // left lower rear
         // Front (-Z)
-        CubemapVertex { pos: [-1.0, -1.0, -1.0], uvw: [ 0.0, 0.0, 5.0] }, // left upper front
-        CubemapVertex { pos: [ 1.0, -1.0, -1.0], uvw: [ 1.0, 0.0, 5.0] }, // right upper front
-        CubemapVertex { pos: [-1.0,  1.0, -1.0], uvw: [ 0.0, 1.0, 5.0] }, // left lower front
-        CubemapVertex { pos: [ 1.0,  1.0, -1.0], uvw: [ 1.0, 1.0, 5.0] }, // right lower front
+        CubemapVertex { pos: [-1.0, -1.0, -1.0] }, // left upper front
+        CubemapVertex { pos: [ 1.0, -1.0, -1.0] }, // right upper front
+        CubemapVertex { pos: [-1.0,  1.0, -1.0] }, // left lower front
+        CubemapVertex { pos: [ 1.0,  1.0, -1.0] }, // right lower front
     ];
 
     let indices = vec![

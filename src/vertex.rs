@@ -165,12 +165,11 @@ impl Vertex for StarVertex {
     }
 }
 
-/// For cubemaps.  Position and UVW.
+/// For cubemaps. Position.
 #[repr(C)]
 #[derive(Clone, Debug, Copy, Serialize, Deserialize)]
 pub struct CubemapVertex {
     pub pos: [f32; 3],
-    pub uvw: [f32; 3],
 }
 impl Vertex for CubemapVertex {
     fn get_type() -> VertexType {
