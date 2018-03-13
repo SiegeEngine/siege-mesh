@@ -87,7 +87,7 @@ impl<V: Vertex> Mesh<V> {
 
         let mut f = try!(File::create(pathstr));
         f.write(&[MAGIC1, MAGIC2, MAGIC3, vertex_type as u8])?;
-        ::bincode::serialize_into(&mut f, self, ::bincode::Infinite)?;
+        ::bincode::serialize_into(&mut f, self)?;
         Ok(())
     }
 
