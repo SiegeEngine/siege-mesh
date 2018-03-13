@@ -7,5 +7,5 @@ authors = ["Mike Dilger <mike@optcomp.nz>"]
 serde = "1.0"
 serde_derive = "1.0"
 bincode = "0.9"
-siege-math = { path = "../siege-math" }
+siege-math = { git = "ssh://mike@git.gnomonicgames.com/data/git/siege-math.git", branch="0.3" }
 error-chain = "0.11"
