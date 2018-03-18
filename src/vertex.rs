@@ -155,9 +155,7 @@ impl Vertex for CheapV2Vertex {
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct StarVertex {
     pub pos: [f32; 3],
-    pub color: [f32; 3],
-    // From 0.0 to 1.0 (percent of max star brightness)
-    pub brightness: f32,
+    pub xyz: [f32; 3], // colorspace
 }
 impl Vertex for StarVertex {
     fn get_type() -> VertexType {
