@@ -16,10 +16,7 @@ pub enum VertexType {
     /// (formerly called PCN)
     Colored = 1,
 
-    /// For standard mesh type, where everything is done with UV mapped textures, so it only
-    /// needs position and UV (formerly called PU)
-    Standard = 2,
-
+    // PU = 2 // retired
     // PNTU = 3, // retired
     // PNTUS = 4, // retired
     // PNTUR = 5, // retired
@@ -28,9 +25,9 @@ pub enum VertexType {
     /// For a rectangular area on the screen for GUI usage (2d position only, uv implicit)
     GuiRectangle = 7,
 
-    /// For grayboxed meshes with no textures involved, using physically-improved
-    /// Blinn-Phong shading.  Per-vertex position and normal.  Color (diffuse
-    /// and specular) and shininess is across the entire model, not per-vertex.
+    /// For grayboxed meshes with no textures involved.  Per-vertex position and normal.
+    /// Color (diffuse and specular) and shininess is across the entire model, not
+    /// per-vertex.
     Graybox = 9,
 
     /// Cheaper than Standard, we provide shading data per-vertex
@@ -44,19 +41,23 @@ pub enum VertexType {
 
     /// Cubemap (position and uvw)
     Cubemap = 14,
+
+    /// For standard mesh type, where everything is done with UV mapped textures, so it only
+    /// needs position, normal and UV
+    Standard = 15,
 }
 
 impl VertexType {
     pub fn try_from_u8(u: u8) -> Result<VertexType> {
         match u {
             1 => Ok(VertexType::Colored),
-            2 => Ok(VertexType::Standard),
             7 => Ok(VertexType::GuiRectangle),
             9 => Ok(VertexType::Graybox),
             11 => Ok(VertexType::CheapV1),
             12 => Ok(VertexType::CheapV2),
             13 => Ok(VertexType::Star),
             14 => Ok(VertexType::Cubemap),
+            15 => Ok(VertexType::Standard),
             _ => Err(ErrorKind::UnknownVertexType.into()),
         }
     }
@@ -87,6 +88,7 @@ impl Vertex for ColoredVertex {
 #[derive(Clone, Debug, Copy, Serialize, Deserialize)]
 pub struct StandardVertex {
     pub pos: [f32; 3],
+    pub normal: [f32; 3],
     pub uv: [f32; 2],
 }
 impl Vertex for StandardVertex {
