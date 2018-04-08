@@ -2,7 +2,7 @@
 use errors::*;
 use vertex::*;
 use std::path::Path;
-use siege_math::Vec4;
+use siege_math::{Vec4, Point3};
 
 pub const MAGIC1: u8 = 238;
 pub const MAGIC2: u8 = 91;
@@ -40,7 +40,11 @@ pub struct Mesh<V: Vertex> {
     /// Pipelines generally use indexed draw, but if not this vector can be empty.
     pub indices: Vec<(u16,u16,u16)>,
 
-    /// Bounding volume
+    /// Bounding sphere (center and radius)
+    pub bounding_sphere: Option<(Point3<f32>, f32)>,
+
+    /// Bounding cuboid (eight corners)
+    pub bounding_cuboid: Option<[Point3<f32>; 8]>,
 
     /// String values
     /// Can use to store names of textures, e.g.: ("bump_texture", "mybump.obj")
@@ -68,6 +72,8 @@ impl<V: Vertex> Default for Mesh<V> {
         Mesh {
             vertices: Vec::new(),
             indices: Vec::new(),
+            bounding_sphere: None,
+            bounding_cuboid: None,
             strings: Vec::new(),
             floats: Vec::new(),
             vec4s: Vec::new(),
