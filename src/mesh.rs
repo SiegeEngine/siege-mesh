@@ -6,7 +6,7 @@ use siege_math::Vec4;
 
 pub const MAGIC1: u8 = 238;
 pub const MAGIC2: u8 = 91;
-pub const MAGIC3: u8 = 130;
+pub const MAGIC3: u8 = 131;
 
 // In order to deserialize a Mesh, we first need to know its vertex type.
 // So we have a header, which helps us deserialize the rest.
@@ -39,6 +39,8 @@ pub struct Mesh<V: Vertex> {
     /// Indices of vertices for forming triangles
     /// Pipelines generally use indexed draw, but if not this vector can be empty.
     pub indices: Vec<(u16,u16,u16)>,
+
+    /// Bounding volume
 
     /// String values
     /// Can use to store names of textures, e.g.: ("bump_texture", "mybump.obj")
