@@ -1,7 +1,9 @@
 
 extern crate siege_mesh;
+extern crate siege_math;
 extern crate bincode;
 
+use siege_math::Point3;
 use siege_mesh::{Mesh, GrayboxVertex, VertexType};
 
 pub fn main() {
@@ -101,9 +103,20 @@ fn define_mesh() -> Mesh<GrayboxVertex> {
         (20, 23, 22), (20, 22, 21u16)
     ];
 
+    let bounding_cuboid = [
+        Point3::new(1.0, 1.0, 1.0),
+        Point3::new(1.0, 1.0, -1.0),
+        Point3::new(1.0, -1.0, 1.0),
+        Point3::new(1.0, -1.0, -1.0),
+        Point3::new(-1.0, 1.0, 1.0),
+        Point3::new(-1.0, 1.0, -1.0),
+        Point3::new(-1.0, -1.0, 1.0),
+        Point3::new(-1.0, -1.0, -1.0)];
+
     let mut mesh = Mesh::new();
     mesh.vertices = vertices;
     mesh.indices = indices;
+    mesh.bounding_cuboid = Some(bounding_cuboid);
     mesh.strings = vec![
         ("pipeline".to_owned(), "graybox".to_owned()),
     ];

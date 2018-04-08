@@ -1,7 +1,9 @@
 
 extern crate siege_mesh;
+extern crate siege_math;
 extern crate bincode;
 
+use siege_math::Point3;
 use siege_mesh::{Mesh, CubemapVertex, VertexType};
 
 pub fn main() {
@@ -57,9 +59,20 @@ fn define_mesh() -> Mesh<CubemapVertex> {
         (22, 21, 20),  (21, 22, 23_u16),
     ];
 
+    let bounding_cuboid = [
+        Point3::new(1.0, 1.0, 1.0),
+        Point3::new(1.0, 1.0, -1.0),
+        Point3::new(1.0, -1.0, 1.0),
+        Point3::new(1.0, -1.0, -1.0),
+        Point3::new(-1.0, 1.0, 1.0),
+        Point3::new(-1.0, 1.0, -1.0),
+        Point3::new(-1.0, -1.0, 1.0),
+        Point3::new(-1.0, -1.0, -1.0)];
+
     let mut mesh = Mesh::new();
     mesh.vertices = vertices;
     mesh.indices = indices;
+    mesh.bounding_cuboid = Some(bounding_cuboid);
     mesh.strings = vec![];
 
     mesh

@@ -1,8 +1,10 @@
 
 extern crate siege_mesh;
+extern crate siege_math;
 extern crate bincode;
 
 use std::f32;
+use siege_math::Point3;
 use siege_mesh::{Mesh, ColoredVertex, VertexType};
 
 pub fn main() {
@@ -40,6 +42,7 @@ fn define_mesh() -> Mesh<ColoredVertex> {
     let mut mesh = Mesh::new();
     mesh.vertices = vertices;
     mesh.indices = indices;
+    mesh.bounding_sphere = Some((Point3::new(0.0, 0.0, 0.0), (3.0_f32).sqrt()));
 
     mesh
 }
