@@ -1,11 +1,16 @@
 [package]
 name = "siege-mesh"
-version = "0.4.0-unstable"
+version = "0.4.0"
 authors = ["Mike Dilger <mike@optcomp.nz>"]
+description = "Mesh Asset library for the Siege Engine"
+repository = "https://github.com/SiegeEngine/siege-mesh"
+readme = "README.md"
+keywords = [ "siege", "mesh", "graphics" ]
+license = "MIT"
 
 [dependencies]
 serde = "1.0"
 serde_derive = "1.0"
 bincode = "1.0"
-siege-math = { git = "ssh://mike@git.gnomonicgames.com/data/git/siege-math.git" }
+siege-math = { git = "https://github.com/SiegeEngine/siege-math" }
 error-chain = "0.11"
