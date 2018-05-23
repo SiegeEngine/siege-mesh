@@ -1,8 +1,7 @@
-
 use errors::*;
-use vertex::*;
+use math::{Point3, Vec4};
 use std::path::Path;
-use math::{Vec4, Point3};
+use vertex::*;
 
 pub const MAGIC1: u8 = 238;
 pub const MAGIC2: u8 = 91;
@@ -38,7 +37,7 @@ pub struct Mesh<V: Vertex> {
 
     /// Indices of vertices for forming triangles
     /// Pipelines generally use indexed draw, but if not this vector can be empty.
-    pub indices: Vec<(u16,u16,u16)>,
+    pub indices: Vec<(u16, u16, u16)>,
 
     /// Bounding sphere (center and radius)
     pub bounding_sphere: Option<(Point3<f32>, f32)>,
@@ -88,8 +87,7 @@ impl<V: Vertex> Mesh<V> {
         }
     }
 
-    pub fn save(&self, vertex_type: VertexType, pathstr: &str) -> Result<()>
-    {
+    pub fn save(&self, vertex_type: VertexType, pathstr: &str) -> Result<()> {
         use std::fs::File;
         use std::io::Write;
 
@@ -99,24 +97,29 @@ impl<V: Vertex> Mesh<V> {
         Ok(())
     }
 
-    pub fn get_string(&self, key: &str) -> Option<String>
-    {
-        self.strings.iter().find(|&&(ref k,_)| k==key).map(|&(_,ref v)|v.clone())
+    pub fn get_string(&self, key: &str) -> Option<String> {
+        self.strings
+            .iter()
+            .find(|&&(ref k, _)| k == key)
+            .map(|&(_, ref v)| v.clone())
     }
 
-    pub fn get_float(&self, key: &str) -> Option<f32>
-    {
-        self.floats.iter().find(|&&(ref k,_)| k==key).map(|&(_,v)|v)
+    pub fn get_float(&self, key: &str) -> Option<f32> {
+        self.floats
+            .iter()
+            .find(|&&(ref k, _)| k == key)
+            .map(|&(_, v)| v)
     }
 
-    pub fn get_vec4(&self, key: &str) -> Option<Vec4<f32>>
-    {
-        self.vec4s.iter().find(|&&(ref k,_)| k==key).map(|&(_,ref v)|v.clone())
+    pub fn get_vec4(&self, key: &str) -> Option<Vec4<f32>> {
+        self.vec4s
+            .iter()
+            .find(|&&(ref k, _)| k == key)
+            .map(|&(_, ref v)| v.clone())
     }
 }
 
-pub fn load_header(path: &Path) -> Result<(VertexType, Vec<u8>)>
-{
+pub fn load_header(path: &Path) -> Result<(VertexType, Vec<u8>)> {
     use std::fs::File;
     use std::io::Read;
 
@@ -127,8 +130,7 @@ pub fn load_header(path: &Path) -> Result<(VertexType, Vec<u8>)>
         return Err(ErrorKind::ShortFile.into());
     }
 
-    if bytes[0]!=MAGIC1 || bytes[1]!=MAGIC2 || bytes[2]!=MAGIC3
-    {
+    if bytes[0] != MAGIC1 || bytes[1] != MAGIC2 || bytes[2] != MAGIC3 {
         return Err(ErrorKind::BadMagicNumber.into());
     }
 

@@ -1,18 +1,17 @@
-
 #[macro_use]
 extern crate serde_derive;
-extern crate serde;
 extern crate bincode;
+extern crate serde;
 
 #[macro_use]
 extern crate error_chain;
 
-#[cfg(feature="siege-math")]
-extern crate siege_math;
-#[cfg(feature="cgmath")]
+#[cfg(feature = "cgmath")]
 extern crate cgmath;
-#[cfg(feature="nalgebra")]
+#[cfg(feature = "nalgebra")]
 extern crate nalgebra;
+#[cfg(feature = "siege-math")]
+extern crate siege_math;
 
 pub mod math;
 pub use self::math::*;

@@ -1,4 +1,3 @@
-
 // Notes:  tangent maps are no longer best precomputed; Better to compute them
 //         in the fragment shader.
 
@@ -9,9 +8,7 @@ use serde::Serialize;
 #[repr(u8)]
 #[derive(Clone, Debug, Copy, Serialize, Deserialize, PartialEq)]
 pub enum VertexType {
-
     // PC = 0, // retired
-
     /// A vertex with color and normal, for demonstration shapes (e.g. cube, tetrahedron)
     /// (formerly called PCN)
     Colored = 1,
@@ -21,7 +18,6 @@ pub enum VertexType {
     // PNTUS = 4, // retired
     // PNTUR = 5, // retired
     // PNTUSR = 6 // retired
-
     /// For a rectangular area on the screen for GUI usage (2d position only, uv implicit)
     GuiRectangle = 7,
 
@@ -63,8 +59,7 @@ impl VertexType {
     }
 }
 
-pub trait Vertex: Copy + Serialize
-{
+pub trait Vertex: Copy + Serialize {
     fn get_type() -> VertexType;
 }
 
