@@ -2,7 +2,7 @@
 use errors::*;
 use vertex::*;
 use std::path::Path;
-use siege_math::{Vec4, Point3};
+use math::{Vec4, Point3};
 
 pub const MAGIC1: u8 = 238;
 pub const MAGIC2: u8 = 91;

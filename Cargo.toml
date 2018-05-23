@@ -8,9 +8,14 @@ readme = "README.md"
 keywords = [ "siege", "mesh", "graphics" ]
 license = "MIT"
 
+[features]
+default = ["siege-math"]
+
 [dependencies]
 serde = "1.0"
 serde_derive = "1.0"
 bincode = "1.0"
-siege-math = { git = "https://github.com/SiegeEngine/siege-math" }
 error-chain = "0.11"
+siege-math = { git = "https://github.com/SiegeEngine/siege-math", optional = true }
+cgmath = { version = "0.16", features = ["serde"], optional = true }
+nalgebra = { version = "0.14", features = ["serde-serialize"], optional = true }

@@ -1,10 +1,8 @@
 
 extern crate siege_mesh;
-extern crate siege_math;
 extern crate bincode;
 
-use siege_math::Point3;
-use siege_mesh::{Mesh, CubemapVertex, VertexType};
+use siege_mesh::{Mesh, CubemapVertex, VertexType, Point3};
 
 pub fn main() {
     let cube_mesh = define_mesh();

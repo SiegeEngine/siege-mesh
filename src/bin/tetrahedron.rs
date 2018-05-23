@@ -1,11 +1,9 @@
 
 extern crate siege_mesh;
-extern crate siege_math;
 extern crate bincode;
 
 use std::f32;
-use siege_math::Point3;
-use siege_mesh::{Mesh, ColoredVertex, VertexType};
+use siege_mesh::{Mesh, ColoredVertex, VertexType, Point3};
 
 pub fn main() {
     let mesh = define_mesh();
